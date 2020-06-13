@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KurirOngkir"
+             xmlns:local1="clr-namespace:KurirOngkir.Ads"
+             x:Class="KurirOngkir.Views.NewItemPage"
+             Title="JNE Ongkir">
+    
+    
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#d4d4d4">
+
+            <StackLayout BackgroundColor="#d4d4d4"
+                VerticalOptions="Center" HorizontalOptions="Center">
+
+                <Image x:Name="imgAsal" Source="asal.png" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+                <Label x:Name="kotaAsal" 
+                       Text="Pilih Kota Asal" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       TextColor="Red"
+                       FontSize="Medium"/>
+
+                <Image x:Name="imgTuju" Source="tuju.png" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+                <Label x:Name="kotaTuju" 
+                       Text="Pilih Kota Tujuan" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       TextColor="#055c5c"
+                       FontSize="Medium"/>
+
+                
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Text="Berat" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="End" 
+                       FontSize="Medium"/>
+                    
+                    <Entry Grid.Column="1" x:Name="entryBerat" Keyboard="Numeric" HorizontalTextAlignment="End"
+                        WidthRequest="200" 
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                        FontSize="Medium">
+                        <Entry.Behaviors>
+                            <local:NumericValidationBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label Grid.Column="2" Text="gram" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Start" 
+                           FontSize="Medium"/>
+                </Grid>
+
+                <Image x:Name="imgCek" Source="proses.png" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+                <Label Text="Lihat Biaya Kirim" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       TextColor="#3280dc"
+                       FontSize="Medium"/>
+
+                
+
+            </StackLayout>
+
+        </ScrollView>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

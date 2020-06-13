@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:KurirOngkir"
+             x:Class="KurirOngkir.Views.CostsPage"
+             Title="Hasil pengecekan"
+             x:Name="BrowseCostsPage">
+
+
+    <Grid BackgroundColor="#d4d4d4" Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Text="{Binding Ket}" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               FontSize="Large" FontAttributes="Bold" 
+               BackgroundColor="LightGray"
+               TextColor="CadetBlue" />
+        <AbsoluteLayout Grid.Row="1">
+            <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding ListOfCost}"                
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,1,1,1"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadCostsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                IsGroupingEnabled="true"
+                BackgroundColor="#d4d4d4">
+
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Heading}"
+                            HorizontalTextAlignment="Center" 
+                            FontSize="Medium"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding service}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="Large" 
+                                HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding description}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Small" 
+                                HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding tarif, StringFormat='Rp {0:N0}'}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Large" 
+                                HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding keterangan}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Small" 
+                                HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <customControls:ImageButton x:Name="floatButton" Source="DONASI.png"
+                                Command="{Binding AddCommand}"
+                                MinimumHeightRequest="10"
+                                MinimumWidthRequest="10"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                AbsoluteLayout.LayoutBounds="1.0,1.0,-1,-1"
+                                Margin="10" />
+            
+        </AbsoluteLayout>
+    </Grid>
+
+</ContentPage>
